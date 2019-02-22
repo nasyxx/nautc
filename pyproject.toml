@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nautc"
 version = "0.1.0"
-description = "<http://qaz.wtf/u/convert.cgi?text=nautc>\nConvert plain text (letters, sometimes numbers, sometimes punctuation) to obscure characters from Unicode."
+description = "<http://qaz.wtf/u/convert.cgi?text=nautc> Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscure characters from Unicode."
 authors = ["Nasy <nasyxx+python@gmail.com>"]
 
 [tool.poetry.dependencies]
