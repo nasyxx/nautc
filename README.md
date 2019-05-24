@@ -6,7 +6,7 @@ Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscur
 # Install
 
 -   requirement: `requests`
--   `$ pip install nautc -U`
+-   `$ pipx install nautc`
 
 
 # Usage
