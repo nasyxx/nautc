@@ -39,7 +39,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __all__ = ["convert"]
 
 # Standard Library
@@ -89,15 +89,28 @@ def convert(text: str) -> Iterator[Tuple[str, str]]:
         )
 
 
-def nautc(text: str, print_label: bool = True, dash_length: int = 20) -> None:
+def nautc(
+    text: str,
+    no_label: bool = False,
+    labels: bool = False,
+    dash_length: int = 20,
+) -> None:
     """Convert and print out `text` to
-    obscure but coooool characters.
+obscure but coooool characters.
+
+    For example:
+        # It will only print out funny nautc.
+        $> nautc nautc --no_label --dash_length=0
+        # It will only print labels.
+        $> nautc xx --labels
+        # It will return errors.
+        $> nautc --labels
     """
     if text:
         for label, ctxt in convert(text):
             print("-" * dash_length)
-            print_label and print(label)  # noqa: WPS428
-            print(ctxt)
+            ((not no_label) or labels) and print(label)  # noqa: WPS428
+            not labels and print(ctxt)  # noqa: WPS428
         print("-" * dash_length)
 
 
