@@ -12,4 +12,6 @@ obscure characters and cooooool characters from Unicode.
 
 # Usage
 
-~$ nautc "nautc"~
+```
+$ nautc "nautc"
+```
