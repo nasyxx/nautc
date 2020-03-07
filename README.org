@@ -58,7 +58,7 @@ optional arguments:
   --labels              [34m<class 'bool'>[39m
   --dash_length DASH_LENGTH
                         [34m<class 'int'>[39m
-#+end_export
+#+end_example
 
 #+HTML: <details>
 
