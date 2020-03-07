@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 r"""
 Life's pathetic, have fun ("▔□▔)/hi~♡ Nasy.
 
@@ -29,6 +30,7 @@ Excited without bugs::
 
 author   : Nasy https://nasy.moe
 date     : Feb 21, 2019
+update   : Mar 07, 2020
 email    : Nasy <nasyxx+python@gmail.com>
 filename : nautc.py
 project  : nautc
@@ -36,40 +38,72 @@ project  : nautc
 There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
-__version__ = "0.1.0"
+
+__version__ = "1.0.0"
+__all__ = ["convert"]
+
 # Standard Library
-import re
-import sys
-import html
-from typing import Tuple, Iterator
-from urllib.parse import quote
+import gzip
+from string import ascii_letters, digits
 
-# Web Packages
-import requests as req
+# Others
+from pkg_resources import resource_filename
+from wisepy2 import wise
 
-URL = "http://qaz.wtf/u/convert.cgi?text={}"
-UTC = re.compile(
-    r"<tr><td><span .+?>(.*?)</span>(.*?)</td><td>(.*?)</td></tr>", re.S
-)
+# Types
+from typing import Iterator, Tuple
 
 
-def nautc(text: str) -> Iterator[Tuple[str, str]]:
-    """Convert plain text to obscure characters from Unicode."""
-    return map(
-        lambda x: (x[0] + x[1], html.unescape(x[2])),
-        UTC.findall(req.get(URL.format(quote(text))).text),
-    )
+def convert(text: str) -> Iterator[Tuple[str, str]]:
+    """Convert plain `text` to obscure characters from Unicode.
+    """
+    with gzip.open(resource_filename("nautc", "txt.gz"), "rt") as txt:
+        return (
+            lambda idxs: map(
+                lambda kv: (
+                    kv[0],
+                    "".join(
+                        map(
+                            lambda char: char in idxs
+                            and kv[1][idxs[char]]
+                            or char,
+                            text,
+                        )
+                    ),
+                ),
+                (
+                    lambda lines: map(
+                        lambda t, c: (t, c.split("||")),
+                        lines[::2],
+                        lines[1::2],
+                    )
+                )(txt.read().splitlines()),
+            )
+        )(
+            dict(
+                map(
+                    lambda kv: (kv[1], kv[0]),
+                    enumerate(ascii_letters + digits),
+                )
+            )
+        )
 
 
-__all__ = ["nautc"]
+def nautc(text: str, print_label: bool = True, dash_length: int = 20) -> None:
+    """Convert and print out `text` to
+    obscure but coooool characters.
+    """
+    if text:
+        for label, ctxt in convert(text):
+            print("-" * dash_length)
+            print_label and print(label)  # noqa: WPS428
+            print(ctxt)
+        print("-" * dash_length)
 
 
 def main() -> None:
     """Main function."""
-    for n, s in nautc(
-        not sys.stdin.isatty() and sys.stdin.read() or "".join(sys.argv[1:])
-    ):
-        print(n + s + ("-" * 20))
+    wise(nautc)()
 
 
 if __name__ == "__main__":

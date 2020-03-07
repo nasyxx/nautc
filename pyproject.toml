@@ -1,19 +1,19 @@
 [tool.poetry]
 name = "nautc"
-version = "0.1.0"
-description = "<http://qaz.wtf/u/convert.cgi?text=nautc> Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscure characters from Unicode."
+version = "1.0.0"
+description = "Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscure but cool characters."
 authors = ["Nasy <nasyxx+python@gmail.com>"]
+include = ["txt.gz"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-requests = "^2.21"
+wisepy2 = "^1.1.1"
 
 [tool.black]
 line-length = 79
 
+[tool.poetry.scripts]
+nautc = "nautc:main"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
-
-[tool.poetry.scripts]
-nautc = "nautc:main"
