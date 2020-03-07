@@ -4,6 +4,7 @@
 #+OPTIONS: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+TITLE: README
 #+DATE: <2019-02-21 Thu>
+#+UPDATE: <2020-03-07 Sat>
 #+AUTHOR: Nasy
 #+EMAIL: nasyxx@gmail.com
 #+LANGUAGE: en
@@ -13,7 +14,8 @@
 
 http://qaz.wtf/u/convert.cgi?text=nautc
 
-Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscure characters from Unicode.
+Convert plain text (letters, sometimes numbers, sometimes punctuation) to
+obscure characters and cooooool characters from Unicode.
 
 * Install
 
