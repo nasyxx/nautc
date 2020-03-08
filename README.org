@@ -12,8 +12,6 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 26.1.91 (Org mode 9.2.1)
 
-http://qaz.wtf/u/convert.cgi?text=nautc
-
 Convert plain text (letters, sometimes numbers, sometimes punctuation) to
 obscure characters and cooooool characters from Unicode.
 
