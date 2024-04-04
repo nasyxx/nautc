@@ -17,7 +17,7 @@ obscure characters and cooooool characters from Unicode.
 
 * Install
 
-+ requirement: ~wisepy2~
++ requirement: ~tyro~
 + ~$ pipx install nautc~
 + ~$ pip install nautc~
 
@@ -31,31 +31,26 @@ obscure characters and cooooool characters from Unicode.
 
 #+RESULTS:
 #+begin_example
-  usage: nautc [-h] [--no_label] [--labels]
-                         [--dash_length DASH_LENGTH]
-                         text
+  usage: nautc.py [-h] [OPTIONS] STR
 
-  Convert and print out `text` to
-  obscure but coooool characters.
+  Convert and print out `text` to obscure but coooool characters. For example:
+      # It will only print out funny nautc.
+      $> nautc nautc --no_label --dash_length=0
+      # It will only print labels.
+      $> nautc xx --labels
+      # It will return errors.
+      $> nautc --labels
 
-      For example:
-          # It will only print out funny nautc.
-          $> nautc nautc --no_label --dash_length=0
-          # It will only print labels.
-          $> nautc xx --labels
-          # It will return errors.
-          $> nautc --labels
-
-
-  positional arguments:
-    text                  <class 'str'>
-
-  optional arguments:
-    -h, --help            show this help message and exit
-    --no_label            <class 'bool'>
-    --labels              <class 'bool'>
-    --dash_length DASH_LENGTH
-                          <class 'int'>
+  ╭─ positional arguments ──────────────────────────────────╮
+  │ STR                     text (required)                 │
+  ╰─────────────────────────────────────────────────────────╯
+  ╭─ options ───────────────────────────────────────────────╮
+  │ -h, --help              show this help message and exit │
+  │ --no-label, --no-no-label                               │
+  │                         (default: False)                │
+  │ --labels, --no-labels   (default: False)                │
+  │ --dash-length INT       (default: 20)                   │
+  ╰─────────────────────────────────────────────────────────╯
 #+end_example
 
 #+HTML: <details>
