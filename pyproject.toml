@@ -1,5 +1,5 @@
 [tool.pdm.build]
-includes = ["txt.gz"]
+includes = ["txt.gz", "*.py"]
 [tool.mypy]
 mypy_path = "./typings"
 exclude = [
@@ -115,7 +115,7 @@ build-backend = "pdm.backend"
 
 [project]
 name = "nautc"
-version = "1.1.1"
+version = "1.1.2"
 description = "Convert plain text (letters, sometimes numbers, sometimes punctuation) to obscure but cool characters."
 authors = [
     {name = "Nasy", email = "nasyxx+python@gmail.com"},
